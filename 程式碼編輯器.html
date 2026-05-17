@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frame 2 UI</title>
+<style>
+  body{
+    margin:0;
+    background:#000;
+  }
+
+  .frame{
+    position:relative;
+    width:2560px;
+    height:1440px;
+    overflow:hidden;
+    background:linear-gradient(270deg,#9100FF 0%,#FF5151 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+  }
+
+  .box{
+  position:absolute;
+  width:500px;
+  height:150px;
+  background:rgba(0,0,0,0.1);
+  border-radius:50px;
+  z-index:1;
+
+  /* glass effect */
+  
+  
+  border:1px solid rgba(255,255,255,0.18);
+  box-sizing:border-box;
+}
+
+  .box.smallText{
+    color:#fff;
+    font-size:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  
+
+  
+
+  .topbarBox{
+    position:absolute;
+    height:70px;
+    border-radius:35px;
+    background:rgba(0,0,0,0.2);
+  }
+
+  .searchText{
+    position:absolute;
+    left:1817px;
+    top:65px;
+    color:#fff;
+    font-size:30px;
+  }
+
+  .nameText{
+    position:absolute;
+    left:2450px;
+    top:65px;
+    color:#fff;
+    font-size:30px;
+  }
+
+    .rect10{
+    position:absolute;
+    width:650px;
+    height:1040px;
+    left:1900px;
+    top:200px;
+
+    background:linear-gradient(0deg,#FFE100 0%,#998700 100%);
+    border-radius:50px;
+
+    /* keep behind cards but above background */
+    z-index:6;
+  }
+  .bText{
+    position:absolute;
+    width:30px;
+    height:36px;
+    left:2015px;
+    top:470px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:30px;
+    line-height:36px;
+    color:#FFFFFF;
+
+    z-index:99999;
+  }
+.img500_1{
+    position:absolute;
+    width:100px;
+    height:100px;
+    left:35px;
+    top:475px;
+
+    background:url('https://i.kfs.io/album/tw/35432,0v1/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    border-radius:5px;
+    z-index:3;
+}
+.titleText{
+    position:absolute;
+    width:90px;
+    height:36px;
+    left:145px;
+    top:475px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:30px;
+    line-height:36px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.artistText{
+    position:absolute;
+    width:111px;
+    height:24px;
+    left:179px;
+    top:511px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.fansText{
+    position:absolute;
+    width:123px;
+    height:24px;
+    left:145px;
+    top:535px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+.unnamed3{
+    position:absolute;
+    width:28px;
+    height:28px;
+    left:145px;
+    top:509px;
+
+    background:url('https://i.kfs.io/artist/global/1584,0v4/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    border-radius:35px;
+
+    z-index:5;
+}
+.img500_3{
+    position:absolute;
+    width:100px;
+    height:100px;
+    left:35px;
+    top:635px;
+
+    background:url('https://i.kfs.io/album/global/186990142,0v3/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    border-radius:5px;
+    z-index:3;
+}
+.unnamed2{
+    position:absolute;
+    width:28px;
+    height:28px;
+    left:145px;
+    top:705px;
+
+    background:url('https://i.kfs.io/artist/global/6848775,0v3/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    border-radius:35px;
+
+    z-index:5;
+}
+.songTitle2{
+    position:absolute;
+    width:365px;
+    height:72px;
+    left:145px;
+    top:635px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:30px;
+    line-height:36px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.artistText2{
+    position:absolute;
+    width:111px;
+    height:24px;
+    left:179px;
+    top:707px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.fansText2{
+    position:absolute;
+    width:110px;
+    height:24px;
+    left:145px;
+    top:731px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+.songTitle3{
+    position:absolute;
+    width:60px;
+    height:36px;
+    left:145px;
+    top:795px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:30px;
+    line-height:36px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.artistText3{
+    position:absolute;
+    width:111px;
+    height:24px;
+    left:179px;
+    top:831px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.fansText3{
+    position:absolute;
+    width:123px;
+    height:24px;
+    left:145px;
+    top:855px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+.img500_4{
+    position:absolute;
+    width:100px;
+    height:100px;
+    left:35px;
+    top:795px;
+
+    background:url('https://i.kfs.io/album/global/26464286,0v1/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    border-radius:5px;
+    z-index:3;
+}
+.unnamed4{
+    position:absolute;
+    width:28px;
+    height:28px;
+    left:145px;
+    top:829px;
+
+    background:url('https://i.kfs.io/artist/global/6848775,0v3/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    border-radius:35px;
+
+    z-index:5;
+}
+.songTitle4{
+    position:absolute;
+    width:60px;
+    height:36px;
+    left:655px;
+    top:475px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:30px;
+    line-height:36px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.artistText4{
+    position:absolute;
+    width:169px;
+    height:24px;
+    left:689px;
+    top:511px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+
+.fansText4{
+    position:absolute;
+    width:123px;
+    height:24px;
+    left:655px;
+    top:535px;
+
+    font-family:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-style:normal;
+    font-weight:400;
+    font-size:20px;
+    line-height:24px;
+    color:#FFFFFF;
+    z-index:4;
+}
+.img500_8{
+    position:absolute;
+    width:100px;
+    height:100px;
+    left:545px;
+    top:475px;
+
+    background:url('https://i.kfs.io/album/global/23212,1v1/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    border-radius:5px;
+    z-index:3;
+}
+.unnamed5{
+    position:absolute;
+    width:28px;
+    height:28px;
+    left:655px;
+    top:509px;
+
+    background:url('https://i.kfs.io/artist/global/4261,0v13/fit/500x500.jpg');
+    background-size:cover;
+    background-position:center;
+    border-radius:35px;
+
+    z-index:5;
+}
+.unnamed1{
+    position:absolute;
+    width:70px;
+    height:70px;
+    left:2370px;
+    top:50px;
+
+    background:url('https://lh3.googleusercontent.com/a/ACg8ocJ4f3Rmmo6GT4IYK5ONcleWkMFo0R984c9gnEB2mKUvapTcna_A=s288-c-no');
+    background-size:cover;
+    background-position:center;
+    border-radius:35px;
+
+    z-index:5;
+}
+.rectangle36{
+    position:absolute;
+    width:650px;
+    height:100px;
+    left:1900px;
+    top:200px;
+
+    /* keep original color but make it glass */
+    background:rgba(0,0,0,0.7);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border:1px solid rgba(255,255,255,0.15);
+    box-sizing:border-box;
+    border-radius:50px 50px 0px 0px;
+
+    z-index:10;
+}
+.rect37{
+    position:absolute;
+    width:650px;
+    height:100px;
+    left:1900px;
+    top:1140px;
+
+    background:rgba(0,0,0,0.7);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border:1px solid rgba(255,255,255,0.15);
+    box-sizing:border-box;
+    border-radius:0px 0px 50px 50px;
+
+    z-index:10;
+}
+.rectangle42{
+    z-index: 10;
+    position:absolute;
+    width:600px;
+    height:1340px;
+    left:1280px;
+    top:50px;
+
+    background:rgba(44,44,44,0.5);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:0px 50px 50px 0px;
+}
+
+.rectangle45{
+    z-index: 10;
+    position:absolute;
+    width:600px;
+    height:1340px;
+    left:679.5px;
+    top:50px;
+
+    background:rgba(44,44,44,0.5);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:50px 0px 0px 50px;
+}
+
+.rectangle43{
+    z-index: 10;
+    position:absolute;
+    width:1200px;
+    height:100px;
+    left:680px;
+    top:50px;
+
+    background:rgba(53,53,53,0.5);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:50px 50px 0px 0px;
+}
+
+.rectangle44{
+    z-index: 10;
+    position:absolute;
+    width:1px;
+    height:1240px;
+    left:1277.5px;
+    top:152px;
+
+    background:#FFFFFF;
+}
+
+.rectangle48{
+    z-index: 10;
+    position:absolute;
+    width:598.5px;
+    height:1px;
+    left:679px;
+    top:402px;
+
+    background:#FFFFFF;
+}
+
+/* unnamed 6 */
+
+.unnamed6{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 689.5px;
+    top: 240px;
+
+    background-image: url('https://lh3.googleusercontent.com/a/ACg8ocJ4f3Rmmo6GT4IYK5ONcleWkMFo0R984c9gnEB2mKUvapTcna_A=s288-c-no');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 75px;
+
+    display: block;
+    z-index: 11;
+}
+.unnamed6 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 689.5px;
+    top: 240px;
+
+    background-image: url("https://lh3.googleusercontent.com/a/ACg8ocJ4f3Rmmo6GT4IYK5ONcleWkMFo0R984c9gnEB2mKUvapTcna_A=s288-c-no");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 75px;
+    z-index: 20;
+}
+
+/* unnamed 6 */
+.unnamed6{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 689.5px;
+    top: 240px;
+
+    background: url('https://lh3.googleusercontent.com/a/ACg8ocJ4f3Rmmo6GT4IYK5ONcleWkMFo0R984c9gnEB2mKUvapTcna_A=s288-c-no');
+    background-size: cover;
+    background-position: center;
+    border-radius: 75px;
+}
+
+/* Rectangle 49 */
+.rectangle49{
+    position: absolute;
+    width: 580px;
+    height: 70px;
+    left: 689.5px;
+    top: 160px;
+
+    /* same as Rectangle 2 style color */
+    background: rgba(44, 44, 44, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 35px;
+
+    z-index: 11;
+}
+
+.search-text{
+    position: absolute;
+
+    left: 720px;
+    top: 163px;
+
+    height: 70px;
+    width: 580px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 30px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+
+    z-index: 11;
+}
+
+    height: 70px;
+    width: 580px;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 30px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+
+    z-index: 11;
+}
+
+/* search icon */
+.search-icon{
+    position: absolute;
+    width: 44px;
+    height: 45px;
+    left: 702px;
+    top: 173px;
+    z-index: 11;
+}
+
+.search-icon svg{
+    width: 44px;
+    height: 45px;
+    display:block;
+}
+.search-icon{
+    position: absolute;
+    width: 44px;
+    height: 45px;
+    left: 702px;
+    top: 173px;
+    z-index: 11;
+}
+
+/* Ellipse 1 */
+.ellipse1{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 1812px;
+    top: 88px;
+    background: #C90000;
+    border-radius: 50%;
+    z-index: 12;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Ellipse 3 */
+.ellipse3{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 1752px;
+    top: 88px;
+    background: #C97C00;
+    border-radius: 50%;
+    z-index: 12;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Ellipse 4 */
+.ellipse4{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 1692px;
+    top: 88px;
+    background: #45B300;
+    border-radius: 50%;
+    z-index: 12;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.milk-tea{
+    position: absolute;
+    width: 60px;
+    height: 36px;
+    left: 850px;
+    top: 260px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+
+    z-index: 11;
+}
+
+/* Toggle - Switch */
+.toggle-switch{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+    gap: 11px;
+
+    position: absolute;
+    width: 64px;
+    height: 28px;
+    left: 1806px;
+    top: 468px;
+
+    background: #34C759;
+    border-radius: 100px;
+    z-index: 11;
+}
+
+.toggle-frame{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 21px;
+    height: 10px;
+}
+
+.toggle-ax-label{
+    display: none;
+    width: 1px;
+    height: 10px;
+    background: #FFFFFF;
+}
+
+.toggle-knob{
+    width: 39px;
+    height: 24px;
+    background: #FFFFFF;
+    border-radius: 100px;
+}
+
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- top bar -->
+  <div class="topbarBox" style="width:600px; left:1760px; top:50px; position:absolute; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.18); border-radius:35px;">
+    <div style="position:absolute; left:14px; top:12.5px; width:45px; height:45px;">
+      <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M36.75 39.375L24.9375 27.5625C24 28.3125 22.9219 28.9063 21.7031 29.3438C20.4844 29.7813 19.1875 30 17.8125 30C14.4062 30 11.5234 28.8203 9.16406 26.4609C6.80469 24.1016 5.625 21.2188 5.625 17.8125C5.625 14.4062 6.80469 11.5234 9.16406 9.16406C11.5234 6.80469 14.4062 5.625 17.8125 5.625C21.2188 5.625 24.1016 6.80469 26.4609 9.16406C28.8203 11.5234 30 14.4062 30 17.8125C30 19.1875 29.7813 20.4844 29.3438 21.7031C28.9063 22.9219 28.3125 24 27.5625 24.9375L39.375 36.75L36.75 39.375ZM17.8125 26.25C20.1562 26.25 22.1484 25.4297 23.7891 23.7891C25.4297 22.1484 26.25 20.1562 26.25 17.8125C26.25 15.4688 25.4297 13.4766 23.7891 11.8359C22.1484 10.1953 20.1562 9.375 17.8125 9.375C15.4688 9.375 13.4766 10.1953 11.8359 11.8359C10.1953 13.4766 9.375 15.4688 9.375 17.8125C9.375 20.1562 10.1953 22.1484 11.8359 23.7891C13.4766 25.4297 15.4688 26.25 17.8125 26.25Z" fill="white"/>
+      </svg>
+    </div>
+</div>
+  <div class="topbarBox" style="width:70px; left:1680px; top:50px; display:flex; align-items:center; justify-content:center; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.18); border-radius:35px;">
+    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.3438 41.25L16.5938 35.25C16.1875 35.0938 15.8047 34.9062 15.4453 34.6875C15.0859 34.4688 14.7344 34.2344 14.3906 33.9844L8.8125 36.3281L3.65625 27.4219L8.48438 23.7656C8.45312 23.5469 8.4375 23.3359 8.4375 23.1328V21.8672C8.4375 21.6641 8.45312 21.4531 8.48438 21.2344L3.65625 17.5781L8.8125 8.67188L14.3906 11.0156C14.7344 10.7656 15.0938 10.5312 15.4688 10.3125C15.8438 10.0938 16.2188 9.90625 16.5938 9.75L17.3438 3.75H27.6562L28.4062 9.75C28.8125 9.90625 29.1953 10.0938 29.5547 10.3125C29.9141 10.5312 30.2656 10.7656 30.6094 11.0156L36.1875 8.67188L41.3438 17.5781L36.5156 21.2344C36.5469 21.4531 36.5625 21.6641 36.5625 21.8672V23.1328C36.5625 23.3359 36.5312 23.5469 36.4688 23.7656L41.2969 27.4219L36.1406 36.3281L30.6094 33.9844C30.2656 34.2344 29.9062 34.4688 29.5312 34.6875C29.1562 34.9062 28.7812 35.0938 28.4062 35.25L27.6562 41.25H17.3438ZM20.625 37.5H24.3281L24.9844 32.5312C25.9531 32.2812 26.8516 31.9141 27.6797 31.4297C28.5078 30.9453 29.2656 30.3594 29.9531 29.6719L34.5938 31.5938L36.4219 28.4063L32.3906 25.3594C32.5469 24.9219 32.6562 24.4609 32.7188 23.9766C32.7812 23.4922 32.8125 23 32.8125 22.5C32.8125 22 32.7812 21.5078 32.7188 21.0234C32.6562 20.5391 32.5469 20.0781 32.3906 19.6406L36.4219 16.5938L34.5938 13.4062L29.9531 15.375C29.2656 14.6563 28.5078 14.0547 27.6797 13.5703C26.8516 13.0859 25.9531 12.7188 24.9844 12.4688L24.375 7.5H20.6719L20.0156 12.4688C19.0469 12.7188 18.1484 13.0859 17.3203 13.5703C16.4922 14.0547 15.7344 14.6406 15.0469 15.3281L10.4063 13.4062L8.57812 16.5938L12.6094 19.5938C12.4531 20.0625 12.3438 20.5312 12.2812 21C12.2188 21.4688 12.1875 21.9688 12.1875 22.5C12.1875 23 12.2188 23.4844 12.2812 23.9531C12.3438 24.4219 12.4531 24.8906 12.6094 25.3594L8.57812 28.4063L10.4063 31.5938L15.0469 29.625C15.7344 30.3438 16.4922 30.9453 17.3203 31.4297C18.1484 31.9141 19.0469 32.2812 20.0156 32.5312L20.625 37.5ZM22.5938 29.0625C24.4062 29.0625 25.9531 28.4219 27.2344 27.1406C28.5156 25.8594 29.1562 24.3125 29.1562 22.5C29.1562 20.6875 28.5156 19.1406 27.2344 17.8594C25.9531 16.5781 24.4062 15.9375 22.5938 15.9375C20.75 15.9375 19.1953 16.5781 17.9297 17.8594C16.6641 19.1406 16.0312 20.6875 16.0312 22.5C16.0312 24.3125 16.6641 25.8594 17.9297 27.1406C19.1953 28.4219 20.75 29.0625 22.5938 29.0625Z" fill="white"/>
+    </svg>
+</div>
+  <div class="topbarBox" style="width:70px; left:1600px; top:50px; display:flex; align-items:center; justify-content:center; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.18); border-radius:35px;">
+  <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.5 37.5C6.46875 37.5 5.58594 37.1328 4.85156 36.3984C4.11719 35.6641 3.75 34.7812 3.75 33.75V11.25C3.75 10.2188 4.11719 9.33594 4.85156 8.60156C5.58594 7.86719 6.46875 7.5 7.5 7.5H37.5C38.5312 7.5 39.4141 7.86719 40.1484 8.60156C40.8828 9.33594 41.25 10.2188 41.25 11.25V33.75C41.25 34.7812 40.8828 35.6641 40.1484 36.3984C39.4141 37.1328 38.5312 37.5 37.5 37.5H7.5ZM22.5 24.375L7.5 15V33.75H37.5V15L22.5 24.375ZM22.5 20.625L37.5 11.25H7.5L22.5 20.625ZM7.5 15V11.25V33.75V15Z" fill="white"/>
+  </svg>
+</div>
+
+  <div class="searchText">搜尋</div>
+  <div class="nameText">奶茶</div>
+
+  <!-- settings icon -->
+  <div class="img500_1"></div>
+
+  <div class="unnamed3"></div>
+
+  <div class="img500_3"></div>
+
+  <div class="img500_4"></div>
+
+  <div class="unnamed4"></div>
+
+  <div class="img500_8"></div>
+
+  <div class="unnamed5"></div>
+
+  <div class="unnamed1"></div>
+
+  <div class="rectangle36"></div>
+
+  <div class="songTitle4">晴天</div>
+  <div class="artistText4">周杰倫 (Jay Chou)</div>
+  <div class="fansText4">63.5萬位粉絲</div>
+
+  <div class="unnamed2"></div>
+
+  <div class="songTitle2">訣愛 (劇集《蒼蘭訣》片頭曲)</div>
+  <div class="artistText2">Faye 詹雯婷</div>
+  <div class="fansText2">5.3萬位粉絲</div>
+
+    <div class="songTitle3">你說</div>
+  <div class="artistText3">Faye 詹雯婷</div>
+  <div class="fansText3">2.38萬位粉絲</div>
+
+  <div class="titleText">心太軟</div>
+  <div class="artistText">Faye 詹雯婷</div>
+  <div class="fansText">2.38萬位粉絲</div>
+  
+
+  <div class="rectangle45"></div>
+  <div class="rectangle42"></div>
+  <div class="rectangle43"></div>
+  <div class="rectangle44"></div>
+  <div class="rectangle48"></div>
+
+  <!-- main right panel -->
+  <div class="rect10"></div>
+  <div class="rect37"></div>
+
+  <!-- grid boxes -->
+  <div class="box" style="left:10px;top:450px"></div>
+  <div class="box" style="left:520px;top:450px"></div>
+  <div class="box" style="left:1030px;top:450px"></div>
+
+  <div class="box" style="left:10px;top:610px"></div>
+  <div class="box" style="left:520px;top:610px"></div>
+  <div class="box" style="left:1030px;top:610px"></div>
+
+  <div class="box" style="left:10px;top:770px"></div>
+  <div class="box" style="left:520px;top:770px"></div>
+  <div class="box" style="left:1030px;top:770px"></div>
+
+  <div class="box" style="left:10px;top:930px"></div>
+  <div class="box" style="left:520px;top:930px"></div>
+  <div class="box" style="left:1030px;top:930px"></div>
+
+  <div class="box" style="left:10px;top:1090px"></div>
+  <div class="box" style="left:520px;top:1090px"></div>
+  <div class="box" style="left:1030px;top:1090px"></div>
+
+  <div class="box" style="left:1540px;top:450px"></div>
+  <div class="box" style="left:1540px;top:610px"></div>
+  <div class="box" style="left:1540px;top:770px"></div>
+  <div class="box" style="left:1540px;top:930px"></div>
+  <div class="box" style="left:1540px;top:1090px"></div>
+
+  <div class="box" style="left:2050px;top:450px"></div>
+  <div class="box" style="left:2050px;top:610px"></div>
+  <div class="box" style="left:2050px;top:770px"></div>
+  <div class="box" style="left:2050px;top:930px"></div>
+  <div class="box" style="left:2050px;top:1090px"></div>
+
+  <!-- sample text -->
+  <div class="bText">ㄅ</div>
+
+</div>
+<div class="unnamed6"></div>
+<div class="rectangle49"></div>
+<div class="search-text">搜尋</div>
+<div class="search-icon">
+<svg width="44" height="45" viewBox="0 0 44 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M35.9333 39.375L24.3833 27.5625C23.4667 28.3125 22.4125 28.9063 21.2208 29.3438C20.0292 29.7813 18.7611 30 17.4167 30C14.0861 30 11.2674 28.8203 8.96042 26.4609C6.65347 24.1016 5.5 21.2188 5.5 17.8125C5.5 14.4062 6.65347 11.5234 8.96042 9.16406C11.2674 6.80469 14.0861 5.625 17.4167 5.625C20.7472 5.625 23.566 6.80469 25.8729 9.16406C28.1799 11.5234 29.3333 14.4062 29.3333 17.8125C29.3333 19.1875 29.1194 20.4844 28.6917 21.7031C28.2639 22.9219 27.6833 24 26.95 24.9375L38.5 36.75L35.9333 39.375ZM17.4167 26.25C19.7083 26.25 21.6562 25.4297 23.2604 23.7891C24.8646 22.1484 25.6667 20.1562 25.6667 17.8125C25.6667 15.4688 24.8646 13.4766 23.2604 11.8359C21.6562 10.1953 19.7083 9.375 17.4167 9.375C15.125 9.375 13.1771 10.1953 11.5729 11.8359C9.96875 13.4766 9.16667 15.4688 9.16667 17.8125C9.16667 20.1562 9.96875 22.1484 11.5729 23.7891C13.1771 25.4297 15.125 26.25 17.4167 26.25Z" fill="white"/>
+</svg>
+</div>
+<div class="search-icon">
+<svg width="44" height="45" viewBox="0 0 44 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M35.9333 39.375L24.3833 27.5625C23.4667 28.3125 22.4125 28.9063 21.2208 29.3438C20.0292 29.7813 18.7611 30 17.4167 30C14.0861 30 11.2674 28.8203 8.96042 26.4609C6.65347 24.1016 5.5 21.2188 5.5 17.8125C5.5 14.4062 6.65347 11.5234 8.96042 9.16406C11.2674 6.80469 14.0861 5.625 17.4167 5.625C20.7472 5.625 23.566 6.80469 25.8729 9.16406C28.1799 11.5234 29.3333 14.4062 29.3333 17.8125C29.3333 19.1875 29.1194 20.4844 28.6917 21.7031C28.2639 22.9219 27.6833 24 26.95 24.9375L38.5 36.75L35.9333 39.375ZM17.4167 26.25C19.7083 26.25 21.6562 25.4297 23.2604 23.7891C24.8646 22.1484 25.6667 20.1562 25.6667 17.8125C25.6667 15.4688 24.8646 13.4766 23.2604 11.8359C21.6562 10.1953 19.7083 9.375 17.4167 9.375C15.125 9.375 13.1771 10.1953 11.5729 11.8359C9.96875 13.4766 9.16667 15.4688 9.16667 17.8125C9.16667 20.1562 9.96875 22.1484 11.5729 23.7891C13.1771 25.4297 15.125 26.25 17.4167 26.25Z" fill="white"/>
+</svg>
+</div>
+<div class="ellipse1"></div>
+<div class="ellipse3"></div>
+<div class="ellipse4"></div>
+<div class="milk-tea">奶茶</div>
+<div class="toggle-switch">
+    <div class="toggle-frame">
+        <div class="toggle-ax-label"></div>
+        <div class="toggle-knob"></div>
+    </div>
+</div>
+</body>
+</html>
